@@ -1,0 +1,86 @@
+{
+  "schema": "motion-blueprint/1",
+  "source": { "file": "video_2026-10-13_20-41-58.mp4", "width": 1080, "height": 1920, "aspect": "9:16", "fps": 30, "duration": 14.379, "frames": 427, "audio": "AAC 44.1kHz (present, not yet analysed)" },
+  "global": {
+    "background": "#F5EEF8 (pale lavender)",
+    "palette": { "blue": "#0A4FA8", "brightBlue": "#0A6CFF", "yellow": "#FFC107", "orange": "#E8951C", "lightBlue": "#B9C8E4" },
+    "fonts": { "display": "ultra-condensed bold grotesque (Anton / Bebas-like), blue", "serifAccent": "high-contrast serif, italic for emphasis", "small": "sans-serif" },
+    "styleLanguage": "B/W cutout subject + flat colour shapes + grayscale botanical cutouts; grid/crosshair marks; drop shadow under standing figures",
+    "persistentOverlay": { "note": "Top gradient bar (grey to transparent, rounded corners) with 'motionbyhim' left and a countdown timer right (0:14 -> 0:00). Appears baked in from a recording UI. Treat as optional, user-replaceable layer.", "present": "all scenes" },
+    "cornerAccents": "dark-blue quarter-circle blobs in bottom-left (scenes 4,6) and top-right (scenes 4,6)"
+  },
+  "scenes": [
+    { "id": "S1", "name": "Hero intro", "start": 0.0, "end": 2.0, "transitionOut": { "type": "hard-cut", "at": 2.0 },
+      "layers": [
+        { "slot": "mainSubject", "kind": "image-cutout", "desc": "full-body standing figure, B/W, arm raised", "anim": { "scale": [0.6, 1.0], "t": [0.0, 0.7], "easing": "easeOutCubic", "then": "slow drift scale to ~1.04" }, "z": 5, "shadow": "soft ground shadow" },
+        { "slot": "shape.yellowTriangle", "kind": "shape", "behind": "mainSubject", "entry": "pop-scale", "t": 0.1 },
+        { "slot": "shape.blueCircle", "kind": "shape", "behind": "mainSubject", "entry": "pop-scale", "t": 0.2 },
+        { "slot": "shape.yellowCircle", "kind": "shape", "front-partial": true, "entry": "pop-scale", "t": 0.3 },
+        { "slot": "deco.botanicals", "kind": "image-cutout", "desc": "grayscale ferns/leaves/rock clusters left and right of torso", "entry": "scale+fade, staggered", "t": [0.2, 0.6] },
+        { "slot": "deco.planet", "kind": "image", "entry": "pop-scale", "t": 0.35 },
+        { "slot": "deco.orb+orbit", "kind": "shape", "desc": "small blue sphere on thin elliptical orbit line", "entry": "draw-on", "t": [0.3, 0.9] },
+        { "slot": "text.kicker", "text": "started", "kind": "text", "style": "small sans, grey", "entry": "mask-reveal-up", "t": [1.0, 1.3] },
+        { "slot": "text.headline", "text": "Facebook", "kind": "text", "style": "bold sans, slate-blue", "entry": "mask-reveal-up (clip from below)", "t": [1.0, 1.35], "pos": "top-centre, y~18%" }
+      ] },
+    { "id": "S2", "name": "Location card (2004)", "start": 2.0, "end": 4.233, "transitionOut": { "type": "fade+blur to background", "t": [3.55, 3.7] },
+      "layers": [
+        { "slot": "background.card", "kind": "image", "desc": "full-bleed rounded photo card, B/W building looking up, tree foliage in lower corners", "anim": { "scale": [1.0, 1.08], "easing": "linear-slow-push-in" } },
+        { "slot": "shape.blueRect", "kind": "shape", "desc": "tall blue rectangle behind building top", "z": 1 },
+        { "slot": "deco.yellowEdge", "kind": "shape", "desc": "yellow highlight along roof edge" },
+        { "slot": "deco.glow", "kind": "effect", "desc": "orange glow top-left", "entry": "fade-in", "t": 2.3 },
+        { "slot": "deco.birds", "kind": "particles", "desc": "tiny dark specks scattered" },
+        { "slot": "text.year", "text": "2004", "kind": "text", "style": "high-contrast serif, white", "entry": "mask-reveal-up", "t": [2.1, 2.7], "pos": "on blue rect, upper" }
+      ] },
+    { "id": "S3", "name": "Transition line + portrait", "start": 4.233, "end": 6.633, "transitionOut": { "type": "hard-cut", "at": 6.633 },
+      "layers": [
+        { "slot": "text.transition", "text": "and since then", "kind": "text", "style": "small sans + serif italic emphasis on 'since'", "entry": "blur-fade in, then fades while portrait enters", "t": [4.23, 4.6] },
+        { "slot": "mainSubject2", "kind": "image-cutout", "desc": "bust portrait in suit, B/W, cropped at right edge", "entry": "slide-in from right", "t": [4.3, 4.8], "easing": "easeOutCubic" },
+        { "slot": "shape.blueGradientBlock", "kind": "shape", "desc": "blue-to-transparent vertical gradient block under bust", "z": 1 },
+        { "slot": "shape.yellowPanel", "kind": "shape", "desc": "yellow-to-white gradient panel, upper right", "entry": "wipe-in", "t": [4.8, 5.2] },
+        { "slot": "image.circleWindow", "kind": "image-masked", "desc": "circular sky/cloud window with logo behind head, orange ring", "entry": "scale-in", "t": [4.7, 5.1] },
+        { "slot": "deco.leaves", "kind": "image-cutout", "desc": "green leaves right of head", "entry": "scale/fade", "t": [4.8, 5.2] },
+        { "slot": "deco.grid", "kind": "shape", "desc": "faint crosshair/grid marks, top-left and bottom-left", "entry": "fade", "t": 5.0 },
+        { "slot": "text.line1", "text": "whole", "kind": "text", "style": "small blue", "t": 5.1 },
+        { "slot": "text.line2", "text": "SOCIAL", "kind": "text", "style": "ultra-condensed bold blue", "entry": "stagger word reveal", "t": 5.2 },
+        { "slot": "text.line3", "text": "MEDIA", "kind": "text", "entry": "stagger word reveal", "t": 5.7 },
+        { "slot": "text.line4", "text": "EMPIRE", "kind": "text", "entry": "stagger word reveal", "t": 6.1 }
+      ] },
+    { "id": "S4", "name": "Product bar (apps)", "start": 6.633, "end": 10.433, "transitionOut": { "type": "hard-cut", "at": 10.433 },
+      "layers": [
+        { "slot": "shape.bar", "kind": "shape", "desc": "dark-blue rounded bar at vertical centre; grows from a small dash to full width", "t": [6.7, 7.0], "easing": "easeOutBack" },
+        { "slot": "icons[0..3]", "kind": "image", "desc": "4 square app icons, popped in sequence inside bar, motion-blurred on entry", "stagger": 0.6, "t": [7.4, 9.8], "entry": "scale-pop + rotate wobble" },
+        { "slot": "deco.grid", "kind": "shape", "desc": "faint light-blue grid lines behind bar", "t": 7.5 },
+        { "slot": "deco.dots", "kind": "shape", "desc": "dark-blue dot top-left; bigger blurred dot right below bar (grows)", "t": [6.6, 8.0] },
+        { "slot": "deco.cornerBlobs", "kind": "shape", "desc": "blue quarter-circle bottom-left; top-right appears after ~7.2s" }
+      ],
+      "note": "bar re-centres/recomposes as each icon is added (bar width constant after full width)" },
+    { "id": "S5", "name": "Hero 2 (standing figure + callout)", "start": 10.433, "end": 12.7, "transitionOut": { "type": "hard-cut", "at": 12.7 },
+      "layers": [
+        { "slot": "mainSubject3", "kind": "image-cutout", "desc": "full-body figure, B/W, headset on face", "anim": { "scale": [0.85, 1.0], "easing": "easeOutCubic" } },
+        { "slot": "shape.yellowCircle", "kind": "shape", "entry": "pop-scale", "t": 10.5 },
+        { "slot": "shape.blueBar", "kind": "shape", "desc": "diagonal thick blue band behind figure", "entry": "slide/rotate in", "t": [10.55, 10.9] },
+        { "slot": "shape.blueCircleLogo", "kind": "shape+image", "desc": "light-blue circle with logo; outline ring draws on", "entry": "scale-in", "t": [10.5, 11.0] },
+        { "slot": "deco.flowers", "kind": "image-cutout", "desc": "pink lotus + leaves at the hand", "entry": "pop-scale", "t": 10.7 },
+        { "slot": "deco.device", "kind": "image-cutout", "desc": "black device beside head", "entry": "fade/scale", "t": 10.55 },
+        { "slot": "text.callout", "text": "METAVERSE", "kind": "text-sticker", "style": "red/orange stacked condensed type with yellow outline, over figure's legs", "entry": "pop-scale + tilt", "t": [10.6, 10.9] }
+      ] },
+    { "id": "S6", "name": "Feature product", "start": 12.7, "end": 14.379, "transitionOut": null,
+      "layers": [
+        { "slot": "text.title", "text": "META'S / VR TECH", "kind": "text", "style": "ultra-condensed bold blue, two lines, top-left", "entry": "slide-in from left with blur", "t": [12.7, 13.0] },
+        { "slot": "shape.circleBase", "kind": "shape", "desc": "light-blue disc, centre", "entry": "blur-to-sharp scale", "t": [12.7, 13.2] },
+        { "slot": "image.product", "kind": "image-cutout", "desc": "product shot centred in disc; rotates through angles (turntable) and settles front-on", "t": [12.8, 13.5] },
+        { "slot": "shape.ring", "kind": "shape", "desc": "bright-blue outer ring draws clockwise (stroke-dash), then white inner ring", "t": [12.8, 13.4] },
+        { "slot": "deco.cornerBlobs", "kind": "shape", "desc": "blue blobs bottom-left and top-right" }
+      ] }
+  ],
+  "reusablePatterns": [
+    "pop-scale (easeOutBack)", "mask-reveal-up (text clip)", "slide-in from edge with blur",
+    "stroke-draw ring / orbit line", "staggered word reveal", "icon pop-in sequence",
+    "slow push-in (card)", "hard cut / fade-blur out", "cutout + colour shapes collage (z-ordered behind/in front of subject)"
+  ],
+  "knownLimits": [
+    "Timings are from 30fps frame inspection at ~1/6s resolution; fine easing curves are estimates.",
+    "S6 product turntable is real 3D/multi-angle imagery, not reproducible from a single static image.",
+    "Audio track not analysed."
+  ]
+}
