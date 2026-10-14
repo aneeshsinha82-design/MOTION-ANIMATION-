@@ -3,8 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title></title>
+<title>Motion Animation Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
+<noscript><p style="padding:2rem">Motion Animation Studio needs JavaScript enabled.</p></noscript>
+
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">Motion</span><input id="projectName" class="name-input" aria-label="Project name" value="Untitled animation"></div>
+  <div class="tb-group">
+    <button id="btnUndo" class="btn ghost" title="Undo (Ctrl+Z)">Undo</button>
+    <button id="btnRedo" class="btn ghost" title="Redo (Ctrl+Shift+Z)">Redo</button>
+  </div>
+  <div class="tb-group grow"></div>
+  <div class="tb-group">
+    <button id="btnPictures" class="btn accent">Add pictures</button>
+    <button id="btnSettings" class="btn">Settings</button>
+    <button id="btnSave" class="btn">Save project</button>
+    <button id="btnLoad" class="btn">Open project</button>
+    <button id="btnExport" class="btn primary">Render MP4</button>
+  </div>
+  <input id="fileLoad" type="file" accept=".json,application/json" hidden>
+</header>
+
+<main class="studio">
+  <aside class="panel left" aria-label="Scenes, mapping and reference">
+    <nav class="tabs" id="leftTabs" role="tablist">
+      <button role="tab" data-tab="scenes" class="on">Scenes</button>
+      <button role="tab" data-tab="mapping">Mapping</button>
+      <button role="tab" data-tab="video">Reference</button>
+    </nav>
+    <div class="panel-body" id="leftBody"></div>
+  </aside>
+
+  <section class="center">
+    <div class="stage-wrap" id="stageWrap">
+      <div class="stage" id="stage">
+        <canvas id="canvas" aria-label="Animation preview"></canvas>
+        <canvas id="overlay" aria-hidden="true"></canvas>
+      </div>
+    </div>
+    <div class="transport">
+      <button id="btnPlay" class="btn primary" aria-label="Play or pause (Space)">Play</button>
+      <button id="btnStart" class="btn ghost" aria-label="Back to start">Start</button>
+      <span class="time" id="timeLabel">0:00.00 / 0:00.00</span>
+      <label class="chk"><input type="checkbox" id="chkLoop" checked> Loop</label>
+      <label class="chk" title="Show dashed boxes where a picture has not been assigned yet"><input type="checkbox" id="chkPlace" checked> Show empty picture slots</label>
+      <span class="grow"></span>
+      <span class="hint" id="stageInfo"></span>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <aside class="panel right" aria-label="Properties">
+    <nav class="tabs" id="rightTabs" role="tablist">
+      <button role="tab" data-tab="layer" class="on">Layer</button>
+      <button role="tab" data-tab="scene">Scene</button>
+    </nav>
+    <div class="panel-body" id="rightBody"></div>
+  </aside>
+</main>
+
+<div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+<dialog id="dlgSettings" class="dlg wide">
+  <header class="dlg-head">
+    <h2>Settings</h2>
+    <nav class="tabs inline" id="settingsTabs">
+      <button data-tab="project" class="on">Project</button>
+      <button data-tab="pictures">Pictures</button>
+      <button data-tab="fonts">Fonts &amp; audio</button>
+      <button data-tab="backend">Backend</button>
+    </nav>
+    <button class="btn ghost" id="closeSettings" aria-label="Close settings">Close</button>
+  </header>
+  <div class="dlg-body" id="settingsBody"></div>
+</dialog>
+
+<dialog id="dlgExport" class="dlg">
+  <header class="dlg-head"><h2>Render MP4</h2><button class="btn ghost" id="closeExport">Close</button></header>
+  <div class="dlg-body" id="exportBody"></div>
+</dialog>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
